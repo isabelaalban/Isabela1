@@ -1,0 +1,126 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    overflow: hidden; /* Evita barras de desplazamiento si el elefante es muy grande */
+}
+
+.elephant-container {
+    position: relative;
+    width: 350px; /* Ancho total estimado del elefante */
+    height: 450px; /* Altura total estimado del elefante */
+    display: flex;
+    flex-direction: column; /* Para apilar la bola debajo del elefante */
+    align-items: center;
+    justify-content: flex-end; /* Coloca el elefante y la bola en la parte inferior */
+}
+
+/* --- CABEZA DEL ELEFANTE --- */ 
+.head {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    background-color: #707070; /* Gris elefante */
+    border-radius: 60% 60% 40% 40% / 80% 80% 20% 20%; /* Forma ovalada para la cabeza */
+    border: 5px solid #555;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
+    z-index: 2; /* Para que la cabeza esté por encima de la bola */
+    margin-bottom: -50px; /* Para que la cabeza se superponga ligeramente con la bola */
+}
+
+/* --- OREJAS --- */
+.ear {
+    position: absolute;
+    width: 120px;
+    height: 150px;
+    background-color: #888888; /* Gris un poco más claro para las orejas */
+    border-radius: 70% 30% 70% 30% / 100% 100% 0% 0%; /* Forma de oreja de elefante */
+    border: 4px solid #555;
+    top: -50px; /* Un poco por encima de la cabeza */
+    z-index: 0; /* Detrás de la cabeza */
+}
+
+.left-ear {
+    left: -80px;
+    transform: rotate(-25deg);
+}
+
+.right-ear {
+    right: -80px;
+    transform: rotate(25deg);
+}
+
+/* --- TROMPA --- */
+.trunk {
+    position: absolute;
+    width: 50px;
+    height: 150px;
+    background-color: #606060; /* Gris más oscuro para la trompa */
+    border-radius: 25px / 60px; /* Redondeado para la trompa */
+    border: 4px solid #555;
+    bottom: -120px; /* Cuelga de la parte inferior de la cabeza */
+    left: 50%;
+    transform: translateX(-50%) rotate(10deg); /* Centra y rota ligeramente */
+    z-index: 3; /* Encima de todo */
+}
+
+.trunk::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #505050; /* Base de la trompa */
+    border-radius: 50%;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid #444;
+}
+
+/* --- OJOS --- */
+.eye {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    top: 60px;
+    border: 2px solid #333;
+    z-index: 4;
+}
+
+.left-eye {
+    left: 50px;
+}
+
+.right-eye {
+    right: 50px;
+}
+
+/* --- BOLA DE CRISTAL --- */
+.crystal-ball {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at 30% 30%, #e0f0ff, #a0d0ff, #50a0ff); /* Degradado para efecto cristalino */
+    border-radius: 50%;
+    border: 5px solid #a0a0a0; /* Borde de cristal */
+    box-shadow: 0 0 20px rgba(0, 100, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.8);
+    z-index: 1; /* Estará detrás de la cabeza del elefante */
+    margin-top: 20px; /* Un poco de espacio entre la bola y el elefante */
+}
+
+/* --- REFLEJO EN LA BOLA DE CRISTAL --- */
+.crystal-reflection {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    top: 20px;
+    left: 30px;
+    filter: blur(5px); /* Suaviza el reflejo */
+}
